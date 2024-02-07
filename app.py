@@ -29,6 +29,7 @@ def download_model():
     for filename in filename_list:
         local_file = os.path.join('/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/', filename)
         if not os.path.exists(local_file):
+            from openxlab.model import download
             download(model_repo=REPO_ID, model_name=filename, output='/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/')
     
 
