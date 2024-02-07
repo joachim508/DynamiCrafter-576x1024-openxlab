@@ -20,6 +20,10 @@ from funcs import (
     save_videos
 )
 
+from openxlab.model import download
+download(model_repo='joachim58/dynamicrafter', 
+model_name='model.ckpt',output='/home/xlab-app-center')
+
 def download_model():
     REPO_ID = 'Doubiiu/DynamiCrafter_1024'
     filename_list = ['model.ckpt']
