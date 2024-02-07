@@ -1,4 +1,3 @@
---extra-index-url https://download.pytorch.org/whl/cu118
 decord==0.6.0
 einops==0.3.0
 imageio==2.9.0
