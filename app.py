@@ -5,6 +5,7 @@ import argparse
 import random
 import time
 from omegaconf import OmegaConf
+from openxlab.model import download
 import torch
 import torchvision
 from pytorch_lightning import seed_everything
@@ -20,19 +21,15 @@ from funcs import (
     save_videos
 )
 
-from openxlab.model import download
-download(model_repo='joachim58/dynamicrafter', 
-model_name='model.ckpt',output='/home/xlab-app-center')
-
 def download_model():
-    REPO_ID = 'Doubiiu/DynamiCrafter_1024'
+    REPO_ID = 'joachim58/dynamicrafter'
     filename_list = ['model.ckpt']
-    if not os.path.exists('./checkpoints/dynamicrafter_1024_v1/'):
-        os.makedirs('./checkpoints/dynamicrafter_1024_v1/')
+    if not os.path.exists('/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/'):
+        os.makedirs('/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/')
     for filename in filename_list:
-        local_file = os.path.join('./checkpoints/dynamicrafter_1024_v1/', filename)
+        local_file = os.path.join('/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/', filename)
         if not os.path.exists(local_file):
-            hf_hub_download(repo_id=REPO_ID, filename=filename, local_dir='./checkpoints/dynamicrafter_1024_v1/', force_download=True)
+            download(model_repo=REPO_ID, model_name=filename, output='/home/xlab-app-center/DynamiCrafter-openxlab/checkpoints/dynamicrafter_1024_v1/')
     
 
 def infer(image, prompt, steps=50, cfg_scale=7.5, eta=1.0, fs=3, seed=123):
