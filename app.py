@@ -21,7 +21,7 @@ from funcs import (
 )
 
 def download_model():
-   REPO_ID = 'Doubiiu/DynamiCrafter_1024'
+    REPO_ID = 'Doubiiu/DynamiCrafter_1024'
     filename_list = ['model.ckpt']
     if not os.path.exists('./checkpoints/dynamicrafter_1024_v1/'):
         os.makedirs('./checkpoints/dynamicrafter_1024_v1/')
