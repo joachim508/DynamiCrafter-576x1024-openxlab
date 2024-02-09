@@ -89,7 +89,7 @@ def infer(image, prompt, steps=50, cfg_scale=7.5, eta=1.0, fs=3, seed=123):
     batch_samples = batch_ddim_sampling(model, cond, noise_shape, n_samples=1, ddim_steps=steps, ddim_eta=eta, cfg_scale=cfg_scale)
     ## b,samples,c,t,h,w
 
-    
+    video_path = './output.mp4'
     save_videos(batch_samples, './', filenames=['output'], fps=save_fps)
     model = model.cpu()
     
