@@ -10,6 +10,7 @@ import torchvision
 from pytorch_lightning import seed_everything
 from huggingface_hub import hf_hub_download
 from einops import repeat
+from openxlab.dataset import upload_file
 import torchvision.transforms as transforms
 from utils.utils import instantiate_from_config
 sys.path.insert(0, "scripts/evaluation")
@@ -92,8 +93,10 @@ def infer(image, prompt, steps=50, cfg_scale=7.5, eta=1.0, fs=3, seed=123):
     video_path = './output.mp4'
     save_videos(batch_samples, './', filenames=['output'], fps=save_fps)
     model = model.cpu()
+    return video_path
     
-
+    upload_file(dataset_repo='joachim58/dc', 
+             source_path='./output.mp4', target_path='/train')
 
 i2v_examples = [
     ['prompts/1024/astronaut04.png', 'a man in an astronaut suit playing a guitar', 50, 7.5, 1.0, 6, 123],
